@@ -1,5 +1,5 @@
 .question {
-  background: #fefefe;
+  background: #2a2a2a;
   border-radius: 8px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
   padding: 24px;
@@ -8,7 +8,7 @@
     margin-top: 8px;
   }
   p {
-    color: #29292e;
+    color: #f2f5f7;
   }
 
   footer {
@@ -39,10 +39,11 @@
       background: transparent;
       cursor: pointer;
       transition: filter 0.2s;
-
+      outline: none;
+      
       &.like-button {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         color: #737380;
         gap: 8px;
 
@@ -50,7 +51,8 @@
           color: #835afd;
 
           svg path {
-            stroke: #835afd;
+            fill: #835afd;
+            stroke: none;
           }
         }
       }

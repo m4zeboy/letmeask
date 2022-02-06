@@ -3,7 +3,7 @@ button.button {
   border-radius: 8px;
   padding: 0 32px;
   font-weight: 500;
-  background-color: #835afd;
+  background-color: #6a42e0;
   color: #fff;
   display: flex;
   align-items:center;
@@ -17,9 +17,9 @@ button.button {
   }
 
   &.outlined {
-    background: #fff;
-    border: 1px solid #835afd;
-    color: #835afd;
+    background: transparent;
+    border: 1px solid #6a42e0;
+    color: #6a42e0;
   }
 
   &:not(:disabled):hover {

@@ -1,16 +1,16 @@
 import { useHistory, useParams } from 'react-router-dom';
 // import { useAuth } from '../hooks/useAuth';
 
-import logoImg from '../assets/images/logo.svg';
-import deleteImage from '../assets/images/delete.svg';
-import { Button } from '../components/Button';
-import { RoomCode } from '../components/RoomCode';
+import logoImg from '../../assets/images/logo.svg';
+import deleteImage from '../../assets/images/delete.svg';
+import { Button } from '../../components/Button';
+import { RoomCode } from '../../components/RoomCode';
 
-import { Question } from '../components/Question';
-import { useRoom } from '../hooks/useRoom';
-import { database } from '../services/firebase';
+import { Question } from '../../components/Question';
+import { useRoom } from '../../hooks/useRoom';
+import { database } from '../../services/firebase';
 
-import '../styles/room.scss';
+import '../../styles/room.scss';
 
 type RoomParams = {
   id: string;
@@ -42,7 +42,7 @@ export function AdminRoom() {
       <header>
         <div className="content">
           <img src={logoImg} alt="Letmeask Logo" />
-          <div>
+          <div className="admin-content">
             <RoomCode code={roomId}/>
             <Button 
               isOutlined
