@@ -38,8 +38,15 @@ export function Home() {
       return;
     }
 
+    if(roomRef.val().endedAt) {
+      alert('Essa sala ja foi encerrada :(')
+      return
+    }
+
     history.push(`/rooms/${roomCode}`)
+
   }
+
 
   return (
     <div id="page-auth">
