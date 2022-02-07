@@ -49,11 +49,11 @@
 
         &.liked {
           color: #835afd;
-
           svg path {
             fill: #835afd;
             stroke: none;
           }
+         
         }
       }
 
@@ -61,5 +61,22 @@
         filter: brightness(0.7);
       }
     }
+  }
+}
+
+// Like animation
+@keyframes likeAnimation {
+  25% {
+    width: 12px;
+    height: 12px;
+    opacity: .5;
+  } 
+  75% {
+    width: 32px;
+    height: 32px;
+  }
+  100% {
+    width: 24px;
+    height: 24px;
   }
 }

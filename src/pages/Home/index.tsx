@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 import { database } from '../../services/firebase';
 
@@ -34,7 +35,7 @@ export function Home() {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if(!roomRef.exists()) {
-      alert('Room does not exists.')
+      toast.error('Essa sala não existe.')
       return;
     }
 
@@ -49,6 +50,15 @@ export function Home() {
 
 
   return (
+    <>
+    <Toaster toastOptions={{ 
+      error: {
+        style: {
+          background: '#3f2c2c',
+          color: '#ff3a3a',
+        }
+      }
+    }}/>
     <div id="page-auth">
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas." />
@@ -77,5 +87,7 @@ export function Home() {
         </div>
       </main>
     </div>
+    </>
+
   )
 }

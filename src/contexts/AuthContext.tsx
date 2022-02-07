@@ -1,3 +1,4 @@
+import toast, { Toaster } from 'react-hot-toast';
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { auth, firebase } from "../services/firebase";
 
@@ -26,6 +27,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         const { displayName, photoURL, uid } = user
 
         if (!displayName || !photoURL) {
+          toast.error('Faltando informações da conta do Google.')
           throw new Error('Missing information from Google Account.')
         }
 
@@ -61,6 +63,16 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     }
   }
   return (
-    <AuthContext.Provider value={{ user, signInWithGoogle }}>{props.children}</AuthContext.Provider>
+    <>
+      <Toaster toastOptions={{
+        error: {
+          style: {
+            background: '#3f2c2c',
+            color: '#ff3a3a',
+          }
+        }
+      }} />
+      <AuthContext.Provider value={{ user, signInWithGoogle }}>{props.children}</AuthContext.Provider>
+    </>
   )
 }
