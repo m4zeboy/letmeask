@@ -1,5 +1,5 @@
 .question {
-  background: #2a2a2a;
+  background: #242429;
   border-radius: 8px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
   padding: 24px;
@@ -7,6 +7,21 @@
   & + .question {
     margin-top: 8px;
   }
+
+  &.highlighted {
+    background-color: #22202D;
+    border: 1px solid #41326F;
+
+    footer .user-info span {
+      color: #86898f;
+    }
+  }
+
+  &.answered {
+    background-color: #3F3F43;
+    border: none;
+  }
+
   p {
     color: #f2f5f7;
   }
