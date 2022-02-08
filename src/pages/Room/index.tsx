@@ -1,8 +1,9 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 
 import logoImg from '../../assets/images/logo.svg';
+import messageImg from '../../assets/images/message.svg';
 import { Button } from '../../components/Button';
 import { RoomCode } from '../../components/RoomCode';
 
@@ -16,7 +17,7 @@ type RoomParams = {
 }
 
 export function Room() {
-  const { user } = useAuth()
+  const { user, signInWithGoogle } = useAuth()
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('')
   const roomId = params.id;
@@ -58,21 +59,26 @@ export function Room() {
       })
     }
   }
-
-  useEffect(() => {
-
-  }, [])
-
   return (
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask Logo" />
+          <Link to="/">
+            <img src={logoImg} alt="Letmeask Logo" />
+          </Link>
           <RoomCode code={roomId} />
         </div>
       </header>
 
-      {isEnded ? <div>Sala encerrada</div> : (
+      {isEnded ? (
+        <div className="ended-room">
+          <div className="content">
+            <img src={messageImg} alt="Sala encerrada" width="150"/>
+            <h2>Sala Encerrada</h2>
+            <p>Que pena, essa sala foi encerrada, tente outro código.</p>
+          </div>
+      </div>
+      ) : (
         <main>
           <div className="room-title">
             <h1>Sala {title}</h1>
@@ -98,7 +104,7 @@ export function Room() {
                   <span>{user.name}</span>
                 </div>
               ) : (
-                <span>Para enviar uma pergunta, <button>faça seu login</button>.</span>
+                <span>Para enviar uma pergunta, <button onClick={signInWithGoogle}>faça seu login</button>.</span>
               )}
               <Button type="submit" disabled={!user}>Enviar pergunta</Button>
             </div>

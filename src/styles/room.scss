@@ -8,7 +8,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      > img {
+      > a img {
         max-height: 45px;
       }
 
@@ -20,6 +20,26 @@
           height:40px;
 
         }
+      }
+    }
+  }
+  .ended-room {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+
+    .content {
+      margin: 64px auto;
+      text-align: center;
+      color: #777;
+      > h2 {
+        font-family: "Poppins", sans-serif;
+        color: #ddd;
+        margin-bottom: 12px; 
+      }
+      > img {
+        margin-bottom: 48px;
       }
     }
   }

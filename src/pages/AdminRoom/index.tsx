@@ -1,10 +1,12 @@
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 // import { useAuth } from '../hooks/useAuth';
 
 import logoImg from '../../assets/images/logo.svg';
 import deleteImage from '../../assets/images/delete.svg';
 import checkImg from '../../assets/images/check.svg';
 import answerImg from '../../assets/images/answer.svg';
+import messageImg from '../../assets/images/message.svg';
+
 import { Button } from '../../components/Button';
 import { RoomCode } from '../../components/RoomCode';
 
@@ -24,7 +26,6 @@ export function AdminRoom() {
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const { questions, title, isEnded } = useRoom(roomId)
-  console.log(questions)
 
   async function handleEndRoom() {
     await database.ref(`rooms/${roomId}`).update({
@@ -58,7 +59,9 @@ export function AdminRoom() {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask Logo" />
+          <Link to="/">
+            <img src={logoImg} alt="Letmeask Logo" />
+          </Link>
           <div className="admin-content">
             <RoomCode code={roomId} />
             <Button
@@ -69,7 +72,15 @@ export function AdminRoom() {
         </div>
       </header>
       {
-        isEnded ? <div>Sala encerrada</div> : (
+        isEnded ? (
+          <div className="ended-room">
+            <div className="content">
+              <img src={messageImg} alt="Sala encerrada" width="150" />
+              <h2>Sala Encerrada</h2>
+              <p>Que pena, essa sala foi encerrada, tente outro código.</p>
+            </div>
+          </div>
+        ) : (
           <main>
             <div className="room-title">
               <h1>Sala {title}</h1>
