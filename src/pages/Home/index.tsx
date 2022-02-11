@@ -40,7 +40,7 @@ export function Home() {
     }
 
     if(roomRef.val().endedAt) {
-      alert('Essa sala ja foi encerrada :(')
+      toast.error('Essa sala ja foi encerrada :(')
       return
     }
 
